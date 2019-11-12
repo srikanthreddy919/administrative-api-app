@@ -6,19 +6,86 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+```ruby
+ruby >= 2.6.3
+```
+* Bundle install
+```
+bundle install
+```
+* Create database & Migrate
+```ruby
+rake db:create db:migrate db:seed
+```
 
-* System dependencies
+* export env variables
+```env
+export DEVISE_SECRET_KEY=generate_secret_key
+```
+* For ` sign in ` request
 
-* Configuration
+```http
+http://localhost:3000/users/sign_in
+```
+> required params ` email ` and ` password ` 
+```json
+{
+  "user":{
+	  "email": "admin@example.com",
+	  "password": "password"
+  }
+}
+```
+* after successfull signin request, copy the token from Authorization header and send along with all the requests
 
-* Database creation
+> as  ` Bearer your_token`
 
-* Database initialization
+* For list of users
+```http
+GET http://localhost:3000/api/v1/users
+```
 
-* How to run the test suite
+* To Create user
+```http
+POST http://localhost:3000/api/v1/users
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+* Sample user Object for creation
 
-* Deployment instructions
+```json
+{
+	"user": {
+		"email": "sample@example.com",
+		"name": "sample name",
+		"mobile_number": "888888822",
+		"password": "password",
+		"password_confirmation": "password",
+		"tags": [1]
+	}
+}
+```
+* For update user
+```http
+PUT http://localhost:3000/api/v1/users/:id
+```
 
-* ...
+* For list of tags
+```http
+GET http://localhost:3000/api/v1/tags
+```
+* To create new tag
+```http
+POST http://localhost:3000/api/v1/tags
+```
+* sample Tag Object for creation
+
+```json
+{
+	"tag": {"name": "employee"}
+}
+```
+
+* To update tag
+```http
+PUT http://localhost:3000/api/v1/tags/:id
+```

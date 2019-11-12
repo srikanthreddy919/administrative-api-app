@@ -8,6 +8,14 @@
 email = "admin@example.com"
 result_user = User.find_by(email: email)
 if(result_user.blank?)
-  user = User.create(email: email, name: "Admin", mobile_number: "984932919")
+  user = User.create(email: email, name: "Admin", mobile_number: "984932919", password: "password")
   puts "User #{user.name} created with email #{user.email}"
+end
+
+require 'faker'
+
+if (User.count < 20)
+  20.times do
+    User.create(name: Faker::Name.name, email: Faker::Internet.email, mobile_number: Faker::PhoneNumber.cell_phone, password: Faker::Code.nric)
+  end
 end
