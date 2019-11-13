@@ -3,7 +3,10 @@ class Api::V1::TagsController < ApplicationController
   before_action :authenticate_user!
   # GET /tags
   def index
-    @tags = Tag.all
+    sort_order = params[:sort_order] || "asc"
+    search = params[:search]
+    @tags = Tag.order("name #{sort_order}")
+    @tags = @tags.where("name ILIKE ?", "%#{search}%") if search.present?
 
     render json: @tags
   end

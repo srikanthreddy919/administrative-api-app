@@ -68,7 +68,10 @@ POST http://localhost:3000/api/v1/users
 ```http
 PUT http://localhost:3000/api/v1/users/:id
 ```
-
+* To disable the user add disabled to user object
+```json
+disabled: true
+```
 * For list of tags
 ```http
 GET http://localhost:3000/api/v1/tags
@@ -88,4 +91,23 @@ POST http://localhost:3000/api/v1/tags
 * To update tag
 ```http
 PUT http://localhost:3000/api/v1/tags/:id
+```
+
+* To search users
+> search with email or name
+```
+GET http://localhost:3000/api/v1/users?search=query
+```
+* To sort users
+```
+GET http://localhost:3000/api/v1/users?sorty_by=field_name&sort_order=asc
+```
+* To search tags
+> search with name
+```
+GET http://localhost:3000/api/v1/tags?search=query
+```
+* To sort tags
+```
+GET http://localhost:3000/api/v1/tags?sort_order=asc
 ```
