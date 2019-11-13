@@ -95,19 +95,19 @@ PUT http://localhost:3000/api/v1/tags/:id
 
 * To search users
 > search with email or name
-```
+```http
 GET http://localhost:3000/api/v1/users?search=query
 ```
 * To sort users
-```
+```http
 GET http://localhost:3000/api/v1/users?sorty_by=field_name&sort_order=asc
 ```
 * To search tags
 > search with name
-```
+```http
 GET http://localhost:3000/api/v1/tags?search=query
 ```
 * To sort tags
-```
+```http
 GET http://localhost:3000/api/v1/tags?sort_order=asc
 ```
